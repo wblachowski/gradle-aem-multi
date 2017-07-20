@@ -98,6 +98,7 @@ aemCompose {
 aemSatisfy {
     group 'dependencies', {
         // local("pkg/vanityurls-components-1.0.2.zip")
+        download('http://repo1.maven.org/maven2/io/wcm/io.wcm.caconfig.editor.package/1.2.4/io.wcm.caconfig.editor.package-1.2.4.zip')
     }
 
     group 'tools', {
