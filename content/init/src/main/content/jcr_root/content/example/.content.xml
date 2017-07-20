@@ -8,6 +8,7 @@
         jcr:title="Example"
         sling:redirect="{Boolean}true"
         sling:redirectStatus="{Long}302"
+        sling:configRef="/conf/example"
         sling:resourceType="foundation/components/redirect"
         redirectTarget="/content/example/en-us"/>
 </jcr:root>

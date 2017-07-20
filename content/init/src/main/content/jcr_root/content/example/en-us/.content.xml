@@ -6,6 +6,7 @@
         cq:template="/apps/example/core/templates/home-page"
         jcr:primaryType="cq:PageContent"
         jcr:title="English"
+        sling:configRef="/conf/example/en-us"
         sling:resourceType="example/core/components/home-page">
         <content
             jcr:primaryType="nt:unstructured"
