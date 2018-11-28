@@ -1,6 +1,7 @@
 import com.cognifide.gradle.aem.instance.tasks.Satisfy
 import com.cognifide.gradle.aem.instance.tasks.Setup
 import com.neva.gradle.fork.ForkTask
+import java.util.function.Consumer
 
 plugins {
     id("com.neva.fork")
@@ -14,7 +15,7 @@ defaultTasks = listOf(":deploy")
 
 aem {
     tasks {
-//        sequence("deploy") { // TODO setupSequence
+        //        sequence("deploy") { // TODO setupSequence
 //            dependsOn(
 //                path(":aemSatisfy"),
 //                path(":aem.full:aemDeploy"),
@@ -51,6 +52,18 @@ tasks.named<ForkTask>(ForkTask.NAME).configure {
                 "Example" to "{{projectLabel}}",
                 "example" to "{{projectName}}"
         ))
+    }
+}
+
+tasks.register("set-up-env") {
+    description = "Creates env json from gradle properties."
+    group = "test"
+    doLast {
+        File("test.functional\\config\\env.json").printWriter().use { out ->
+            out.println("{\"instances\":{")
+            aem.instances.forEach(Consumer { out.println("\"${it.name}\": \"${it.httpUrl}\",")})
+            out.println("}}")
+        }
     }
 }
 
