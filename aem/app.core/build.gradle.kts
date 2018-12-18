@@ -12,32 +12,9 @@ dependencies {
 }
 
 
-configure<JavaPluginConvention> {
-    sourceSets {
-        create("author") {
-            compileClasspath += this@sourceSets["main"].compileClasspath
-        }
-    }
-}
-
-tasks {
-    register("jarAuthor", Jar::class.java) {
-        val convention = (project.convention.getPluginByName("java") as JavaPluginConvention)
-
-        from(convention.sourceSets.getByName("author").output)
-    }
-}
-
 aem {
-    bundle("jarAuthor") {
-        jar.classifier = "author"
-        javaPackage = "com.company.example.aem.app.core.author"
+    tasks {
+        bundle("author")
+        bundle("publish")
     }
 }
-
-tasks {
-    named<Compose>(Compose.NAME) {
-        fromBundle(aem.bundle("jarAuthor"))
-    }
-}
-
