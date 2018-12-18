@@ -1,4 +1,4 @@
-package com.company.example.aem.app.author
+package com.company.example.aem.app.core.author
 
 import org.osgi.service.component.annotations.Activate
 import org.osgi.service.component.annotations.Component
