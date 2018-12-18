@@ -18,9 +18,11 @@ allprojects {
     plugins.withId("com.cognifide.aem.bundle") {
 
         configure<AemExtension> {
-            bundle {
-                category = "example"
-                vendor = "Company"
+            tasks {
+                bundle {
+                    category = "example"
+                    vendor = "Company"
+                }
             }
         }
 

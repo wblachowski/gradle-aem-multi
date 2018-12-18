@@ -11,7 +11,6 @@ dependencies {
     implementation(project(":aem:app.common"))
 }
 
-
 aem {
     tasks {
         bundle("author")
